@@ -1,4 +1,4 @@
-﻿namespace ErrorQueue.Models
+﻿namespace ErrorQueue.DatabaseSettings
 {
     public interface IShoppingCartDatabaseSettings
     {

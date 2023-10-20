@@ -1,5 +1,5 @@
 ﻿using DataAccess.Models;
-using ErrorQueue.Models;
+using ErrorQueue.DatabaseSettings;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
