@@ -18,6 +18,7 @@ namespace DataAccess.Context
 
         }
         public DbSet<ShoppingCart> shoppingCart { get; set; } = default!;
+        public DbSet<FailedStatus> failedStatus { get; set; } = default!;
         //public DbSet<Product> product{ get; set; } = default!;
         //public DbSet<Cart_Products> cart_Products{ get; set; } = default!;
 

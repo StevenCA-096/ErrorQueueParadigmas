@@ -13,8 +13,11 @@ namespace ErrorQueue.Controllers
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IShoppingCartService _shoppingCartService;
+        private readonly IFailedStatusService _failedStatusService;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService) {
+        public ShoppingCartController(IShoppingCartService shoppingCartService, IFailedStatusService failedStatusService) {
+            _shoppingCartService = shoppingCartService;
+            _failedStatusService = failedStatusService;
             this._shoppingCartService = shoppingCartService;
         }
 
@@ -34,12 +37,17 @@ namespace ErrorQueue.Controllers
         [HttpPost]
         public ActionResult<ShoppingCart> Post([FromBody] ShoppingCart shoppingCart)
         {
+            _failedStatusService.DetectAndSendDuplicateIds(shoppingCart);
+
+            _shoppingCartService.CreateNewShoppingCart(shoppingCart);
+
             _shoppingCartService.CreateNewShoppingCart(shoppingCart);
             return CreatedAtAction(nameof(GetById), new { id = shoppingCart.Id }, shoppingCart);
-            
+
+
             //_shoppingCartRepository.Insert(shoppingCart);
             //_shoppingCartRepository.Save();
-           
+
         }
 
         // PUT api/<ShoppingCartController>/5

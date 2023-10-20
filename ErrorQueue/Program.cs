@@ -1,4 +1,5 @@
 using DataAccess.Context;
+using ErrorQueue.Controllers;
 using ErrorQueue.DatabaseSettings;
 using ErrorQueue.Services;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<FailedStatusController>();
 builder.Services.AddDbContext<ErrorQueueContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ErrorQueueBD") ??
 throw new InvalidOperationException("Connection string 'ErrorQueueBD' not found.")));
