@@ -7,6 +7,7 @@ namespace ErrorQueue.Controllers
 {
     public class FailedStatusController : Controller
     {
+
         private readonly IShoppingCartService _shoppingCartService;
         private readonly IQueueService _queueService;
 
@@ -14,6 +15,12 @@ namespace ErrorQueue.Controllers
         {
             _shoppingCartService = shoppingCartService;
             _queueService = queueService;
+        }
+
+        [HttpGet]
+        public IEnumerable<ShoppingCart> Get()
+        {
+            return _shoppingCartService.GetShoppingCarts();
         }
 
         [HttpPost]
