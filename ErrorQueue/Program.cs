@@ -31,6 +31,8 @@ builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(builder.Configu
     ("ShoppingCartDatabaseSettings:ConnectionString")));
 
 builder.Services.AddScoped<IShoppingCartService,ShoppingCartService>();
+builder.Services.AddScoped<IFailedStatusService, FailedStatusService>();
+builder.Services.AddScoped<IQueueService, QueueService>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

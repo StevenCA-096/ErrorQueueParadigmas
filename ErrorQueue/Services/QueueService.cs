@@ -1,6 +1,6 @@
 ﻿namespace ErrorQueue.Services
 {
-    public class QueueService
+    public class QueueService : IQueueService
     {
         private readonly Queue<object> _queue = new Queue<object>();
 
