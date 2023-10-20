@@ -2,6 +2,9 @@
 using ErrorQueue.DatabaseSettings;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Newtonsoft.Json;
+using System.Text;
+using static System.Net.WebRequestMethods;
 
 namespace ErrorQueue.Services
 {
@@ -35,15 +38,33 @@ namespace ErrorQueue.Services
             return _database.Find(sh => true).ToList();
         }
 
-        public void SendShopping()
+        public async Task<List<ShoppingCart>> SendShopping()
         {
-            BsonArray shoppingCarts = (BsonArray)_database.ToBson();
+            //"https://localhost:7077/api/Event"
+            var url = "https://localhost:7185/api/ShoppingCart";
+   
+            using var client = new HttpClient();
 
-        }
+            List<ShoppingCart> shoppingCarts = new List<ShoppingCart>();
+            shoppingCarts = _database.Find(sh => true).ToList();
 
-        public ShoppingCart SendShopping(ShoppingCart shoppingCart)
-        {
-            throw new NotImplementedException();
+            foreach (var sh in shoppingCarts) {
+                var shoppinCartSerilizared = JsonConvert.SerializeObject(sh);
+                var data = new StringContent(shoppinCartSerilizared, Encoding.UTF8, "application/json");
+                try
+                {
+                    var response = await client.PostAsync(url, data);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        DeleteShoppingCart(sh.Id);
+                    }
+                }
+                catch(Exception e){
+                    throw e;
+                }
+            }
+            return shoppingCarts;
+            
         }
     }
 }

@@ -13,7 +13,6 @@ namespace ErrorQueue.Controllers
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IShoppingCartService _shoppingCartService;
-
         public ShoppingCartController(IShoppingCartService shoppingCartService) {
             this._shoppingCartService = shoppingCartService;
         }
@@ -41,13 +40,6 @@ namespace ErrorQueue.Controllers
             //_shoppingCartRepository.Save();
            
         }
-
-        // PUT api/<ShoppingCartController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
         // DELETE api/<ShoppingCartController>/5
         [HttpDelete("{id}")]
         public void Delete(string id)

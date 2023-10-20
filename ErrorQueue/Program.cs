@@ -1,9 +1,12 @@
 using DataAccess.Context;
 using ErrorQueue.DatabaseSettings;
+using ErrorQueue.Quartz;
 using ErrorQueue.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using Quartz;
+using Quartz.Impl;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +33,22 @@ builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(builder.Configu
     ("ShoppingCartDatabaseSettings:ConnectionString")));
 
 builder.Services.AddScoped<IShoppingCartService,ShoppingCartService>();
+
+builder.Services.AddInfrastructure();
+
+//ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+
+
+//IScheduler scheduler = await schedulerFactory.GetScheduler();
+
+//await scheduler.Start();
+
+//IJobDetail jobDetail = JobBuilder.Create<ShppingCartJob>().WithIdentity("Shopping car job", "Shopping cart job group").Build();
+
+
+//Quartz.ITrigger trigger = Quartz.TriggerBuilder.Create().WithIdentity("Shopping cart trigger", "Shopping cart job group").Build();
+
+//await scheduler.ScheduleJob(jobDetail, trigger);
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
