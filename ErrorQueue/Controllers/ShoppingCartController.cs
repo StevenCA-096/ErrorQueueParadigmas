@@ -1,4 +1,5 @@
 ﻿using DataAccess.Models;
+using ErrorQueue.Services;
 using Microsoft.AspNetCore.Mvc;
 using Services.IRepository;
 
@@ -11,20 +12,34 @@ namespace ErrorQueue.Controllers
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IShoppingCartService _shoppingCartService;
+
+        public ShoppingCartController(IShoppingCartService shoppingCartService) {
+            this._shoppingCartService = shoppingCartService;
+        }
 
 
         [HttpGet]
         public IEnumerable<ShoppingCart> Get()
         {
-            return _shoppingCartRepository.GetAll();
+            return _shoppingCartService.GetShoppingCarts();
+        }
+
+        [HttpGet("id")]
+        public ShoppingCart GetById(string id)
+        {
+            return _shoppingCartService.GetShoppingCartById(id);
         }
         // POST api/<ShoppingCartController>
         [HttpPost]
-        public void Post([FromBody] ShoppingCart shoppingCart)
+        public ActionResult<ShoppingCart> Post([FromBody] ShoppingCart shoppingCart)
         {
-            _shoppingCartRepository.Insert(shoppingCart);
-            _shoppingCartRepository.Save();
-
+            _shoppingCartService.CreateNewShoppingCart(shoppingCart);
+            return CreatedAtAction(nameof(GetById), new { id = shoppingCart.Id }, shoppingCart);
+            
+            //_shoppingCartRepository.Insert(shoppingCart);
+            //_shoppingCartRepository.Save();
+           
         }
 
         // PUT api/<ShoppingCartController>/5
@@ -35,8 +50,9 @@ namespace ErrorQueue.Controllers
 
         // DELETE api/<ShoppingCartController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            _shoppingCartService.DeleteShoppingCart(id);
         }
     }
 }

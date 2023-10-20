@@ -1,4 +1,6 @@
-﻿using DataAccess.Relations;
+﻿
+using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +9,21 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Models
 {
+    [BsonIgnoreExtraElements]
     public class ShoppingCart
-    {
-            public int TotalAmount { get; set; }
-            public int SubTotal { get; set; }
+    {   
+        [BsonId]
+        public string Id { get; set; }
+        [BsonElement("userId")]
+        public int UserId { get; set; }
+        [BsonElement("subtotal")]
+        public double SubTotal { get; set; }
+        [BsonElement("total")]
+        public double Total { get; set; }
+        [BsonElement("shoppingDate")]
+        public DateTime ShoppingDate { get; set; }
+        [BsonIgnore]
+        public List<ProductCart> ProductCarts { get; set; } = new List<ProductCart>();
 
-            public int Total { get; set; }
-
-            public List<Cart_Products> Cart_Products { get; set; }
-        
     }
 }

@@ -1,5 +1,5 @@
 ﻿using DataAccess.Models;
-using DataAccess.Relations;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -18,8 +18,8 @@ namespace DataAccess.Context
 
         }
         public DbSet<ShoppingCart> shoppingCart { get; set; } = default!;
-        public DbSet<Product> product{ get; set; } = default!;
-        public DbSet<Cart_Products> cart_Products{ get; set; } = default!;
+        //public DbSet<Product> product{ get; set; } = default!;
+        //public DbSet<Cart_Products> cart_Products{ get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

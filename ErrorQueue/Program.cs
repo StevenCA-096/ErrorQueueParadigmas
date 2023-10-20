@@ -1,5 +1,9 @@
 using DataAccess.Context;
+using ErrorQueue.Models;
+using ErrorQueue.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +17,18 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ErrorQueueContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ErrorQueueBD") ??
 throw new InvalidOperationException("Connection string 'ErrorQueueBD' not found.")));
+
+builder.Services.Configure<ShoppingCartDatabaseSettings>(
+    builder.Configuration.GetSection(nameof(ShoppingCartDatabaseSettings))
+    );      
+
+builder.Services.AddSingleton<IShoppingCartDatabaseSettings>(
+    SP => SP.GetRequiredService<IOptions<ShoppingCartDatabaseSettings>>().Value);
+
+builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(builder.Configuration.GetValue<string>
+    ("ShoppingCartDatabaseSettings:ConnectionString")));
+
+builder.Services.AddScoped<IShoppingCartService,ShoppingCartService>();
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 

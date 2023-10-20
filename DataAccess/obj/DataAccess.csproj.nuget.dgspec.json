@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj": {}
+    "C:\\Users\\Estudiantes UNA.N00165724.001\\Desktop\\Visual\\Paradigmas\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\Estudiantes UNA.N00165724.001\\Desktop\\Visual\\Paradigmas\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\Estudiantes UNA.N00165724.001\\Desktop\\Visual\\Paradigmas\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\obj\\",
+        "projectPath": "C:\\Users\\Estudiantes UNA.N00165724.001\\Desktop\\Visual\\Paradigmas\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\Estudiantes UNA.N00165724.001\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Estudiantes UNA.N00165724.001\\Desktop\\Visual\\Paradigmas\\ErrorQueueParadigmas\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Estudiantes UNA.N00165724.001\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -77,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
