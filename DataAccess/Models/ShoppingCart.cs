@@ -13,7 +13,7 @@ namespace DataAccess.Models
     public class ShoppingCart
     {   
         [BsonId]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [BsonElement("userId")]
         public int UserId { get; set; }
         [BsonElement("subtotal")]
