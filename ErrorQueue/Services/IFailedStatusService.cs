@@ -8,7 +8,7 @@ namespace ErrorQueue.Services
         List<FailedStatus> GetFailedCarts();
         FailedStatus GetFailedCartById(string id);
         FailedStatus CreateNewFailedCart(FailedStatus failedStatus);
-        FailedStatus SendShopping(FailedStatus failedStatus);
+        FailedStatus SendFailedShopping(FailedStatus failedStatus);
         void DeleteFailedCart(string id);
         void DetectAndSendDuplicateIds(ShoppingCart shoppingCart);
     }

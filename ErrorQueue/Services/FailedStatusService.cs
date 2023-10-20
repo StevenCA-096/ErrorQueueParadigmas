@@ -1,5 +1,6 @@
 ﻿using DataAccess.Models;
 using ErrorQueue.DatabaseSettings;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace ErrorQueue.Services
@@ -35,6 +36,23 @@ namespace ErrorQueue.Services
         public void DeleteFailedCart(string id)
         {
             _database.DeleteOne(SH => SH.Id == id);
+        }
+
+        public FailedStatus CreateNewFailedCart(FailedStatus failedStatus)
+        {
+            _database.InsertOne(failedStatus);
+            return failedStatus;
+        }
+
+        public void SendFailedShopping()
+        {
+            BsonArray failedCarts = (BsonArray)_database.ToBson();
+
+        }
+
+        public FailedStatus SendFailedShopping(FailedStatus failedStatus)
+        {
+            throw new NotImplementedException();
         }
 
         public void DetectAndSendDuplicateIds(ShoppingCart shoppingCart)
