@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\Services\\Services.csproj": {}
+    "D:\\Documentos\\ErrorQueue\\Services\\Services.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj": {
+    "D:\\Documentos\\ErrorQueue\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "D:\\Documentos\\ErrorQueue\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\obj\\",
+        "projectPath": "D:\\Documentos\\ErrorQueue\\DataAccess\\DataAccess.csproj",
+        "packagesPath": "C:\\Users\\kucse\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\ErrorQueue\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kucse\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -56,6 +56,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.22.0, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -81,17 +85,17 @@
         }
       }
     },
-    "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\Services\\Services.csproj": {
+    "D:\\Documentos\\ErrorQueue\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\Services\\Services.csproj",
+        "projectUniqueName": "D:\\Documentos\\ErrorQueue\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\Services\\Services.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\Services\\obj\\",
+        "projectPath": "D:\\Documentos\\ErrorQueue\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\kucse\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\ErrorQueue\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\kucse\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -105,8 +109,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\User\\OneDrive\\Escritorio\\ErrorQueueParadigmas\\DataAccess\\DataAccess.csproj"
+              "D:\\Documentos\\ErrorQueue\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "D:\\Documentos\\ErrorQueue\\DataAccess\\DataAccess.csproj"
               }
             }
           }

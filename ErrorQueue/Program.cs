@@ -2,9 +2,15 @@ using DataAccess.Context;
 using ErrorQueue.DatabaseSettings;
 using ErrorQueue.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using System;
+using System.Reflection.Metadata;
+using Quartz;
+using Quartz.Impl;
+using ErrorQueue;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -62,4 +68,28 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+//configurar eel job
+// 1. Create a scheduler Factory
+ISchedulerFactory schedulerFactory = new StdSchedulerFactory();
+
+// 2. Get and start a scheduler
+IScheduler scheduler = await schedulerFactory.GetScheduler();
+await scheduler.Start();
+
+// 3. Create a job
+IJobDetail job = JobBuilder.Create<NumberGeneratorJob>()
+        .WithIdentity("number generator job", "number generator group")
+        .Build();
+
+// 4. Create a trigger
+Quartz.ITrigger trigger = Quartz.TriggerBuilder.Create()
+    .WithIdentity("number generator trigger", "number generator group")
+    .WithSimpleSchedule(x => x.WithIntervalInSeconds(5).RepeatForever())
+    .Build();
+
+// 5. Schedule the job using the job and trigger 
+await scheduler.ScheduleJob(job, trigger);
+
 app.Run();
+
+
