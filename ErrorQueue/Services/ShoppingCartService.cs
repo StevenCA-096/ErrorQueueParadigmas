@@ -20,12 +20,12 @@ namespace ErrorQueue.Services
             return shoppingCart;    
         }
 
-        public void DeleteShoppingCart(int id)
+        public void DeleteShoppingCart(string id)
         {
             _database.DeleteOne(SH => SH.Id == id);
         }
 
-        public ShoppingCart GetShoppingCartById(int id)
+        public ShoppingCart GetShoppingCartById(string id)
         {
             return _database.Find(sh =>sh.Id == id).FirstOrDefault();
         }
