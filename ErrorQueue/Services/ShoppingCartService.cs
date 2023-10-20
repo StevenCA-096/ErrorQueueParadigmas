@@ -41,6 +41,7 @@ namespace ErrorQueue.Services
         public async Task<List<ShoppingCart>> SendShopping()
         {
             //"https://localhost:7077/api/Event"
+
             var url = "https://localhost:7185/api/ShoppingCart";
    
             using var client = new HttpClient();

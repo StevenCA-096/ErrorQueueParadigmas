@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Models;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace DataAccess.Models
@@ -12,10 +13,11 @@ namespace DataAccess.Models
     public class ProductCart
     {
         [BsonId]
-        public int Id { get; set; }
+        //[BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         [BsonElement("ProductoID")]
         public int ProductoId { get; set; }
-        [BsonIgnore]
+        [BsonElement("producto")]
         public Producto Producto { get; set; }
         [BsonElement("cartId")]
         public int CartId { get; set; }

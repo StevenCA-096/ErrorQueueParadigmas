@@ -13,7 +13,8 @@ namespace DataAccess.Models
     public class Producto
     {
         [BsonId]
-        public int Id { get; set; }
+        //[BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
         [BsonElement("name")]
         public string Name { get; set; }
         [BsonElement("price")]
