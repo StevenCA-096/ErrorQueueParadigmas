@@ -23,9 +23,9 @@ namespace ErrorQueue.Services
             return shoppingCart;    
         }
 
-        public void DeleteShoppingCart(string id)
+        public async void DeleteShoppingCart(string id)
         {
-            _database.DeleteOne(SH => SH.Id == id);
+             await _database.DeleteOneAsync(SH => SH.Id == id);
         }
 
         public ShoppingCart GetShoppingCartById(string id)
@@ -41,15 +41,18 @@ namespace ErrorQueue.Services
         public async Task<List<ShoppingCart>> SendShopping()
         {
             //"https://localhost:7077/api/Event"
-
+            Random rn = new Random();
             var url = "https://localhost:7185/api/ShoppingCart";
    
             using var client = new HttpClient();
 
-            List<ShoppingCart> shoppingCarts = new List<ShoppingCart>();
+            List<ShoppingCart> shoppingCarts = new List<ShoppingCart>(); 
             shoppingCarts = _database.Find(sh => true).ToList();
 
             foreach (var sh in shoppingCarts) {
+                var currentId = sh.Id;
+                
+                sh.Id =  rn.Next(0, 100).ToString();
                 var shoppinCartSerilizared = JsonConvert.SerializeObject(sh);
                 var data = new StringContent(shoppinCartSerilizared, Encoding.UTF8, "application/json");
                 try
@@ -57,11 +60,17 @@ namespace ErrorQueue.Services
                     var response = await client.PostAsync(url, data);
                     if (response.IsSuccessStatusCode)
                     {
-                        DeleteShoppingCart(sh.Id);
+                        try
+                        {
+                            await _database.DeleteOneAsync(SH => SH.Id == currentId);
+                        }
+                        catch (Exception ex){
+                            Console.WriteLine(ex);
+                        }
                     }
                 }
                 catch(Exception e){
-                    throw e;
+                    Console.WriteLine(e);
                 }
             }
             return shoppingCarts;

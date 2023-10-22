@@ -22,13 +22,15 @@ builder.Services.AddDbContext<ErrorQueueContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ErrorQueueBD") ??
 throw new InvalidOperationException("Connection string 'ErrorQueueBD' not found.")));
 
+
+//Busca la seccion en el appsettings con el nombre ShoppingCartDatabaseSettings
 builder.Services.Configure<ShoppingCartDatabaseSettings>(
     builder.Configuration.GetSection(nameof(ShoppingCartDatabaseSettings))
     );      
-
+//Agrega a la interfaz los valores del appsettings
 builder.Services.AddSingleton<IShoppingCartDatabaseSettings>(
     SP => SP.GetRequiredService<IOptions<ShoppingCartDatabaseSettings>>().Value);
-
+//Crea el cliente de mongo
 builder.Services.AddSingleton<IMongoClient>(s => new MongoClient(builder.Configuration.GetValue<string>
     ("ShoppingCartDatabaseSettings:ConnectionString")));
 
