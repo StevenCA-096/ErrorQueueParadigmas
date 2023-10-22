@@ -14,17 +14,19 @@ namespace DataAccess.Models
     {
         [BsonId]
         //[BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        [BsonElement("userId")]
-        public int UserId { get; set; }
+        public string CartId { get; set; }
+        [BsonElement("costumerId")]
+        public int CostumerId { get; set; }
+        
+        [BsonElement("products")]
+        public List<Producto> products { get; set; }
+        [BsonElement("date")]
+        public DateTime Date { get; set; }
         [BsonElement("subtotal")]
         public double SubTotal { get; set; }
         [BsonElement("total")]
         public double Total { get; set; }
-        [BsonElement("shoppingDate")]
-        public DateTime ShoppingDate { get; set; }
-        [BsonElement("shoppingCarts")]
-        public List<ProductCart> ProductCarts { get; set; } = new List<ProductCart>();
+           
 
     }
 }

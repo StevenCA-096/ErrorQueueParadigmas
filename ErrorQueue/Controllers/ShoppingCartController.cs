@@ -34,7 +34,7 @@ namespace ErrorQueue.Controllers
         public ActionResult<ShoppingCart> Post([FromBody] ShoppingCart shoppingCart)
         {
             _shoppingCartService.CreateNewShoppingCart(shoppingCart);
-            return CreatedAtAction(nameof(GetById), new { id = shoppingCart.Id }, shoppingCart);
+            return CreatedAtAction(nameof(GetById), new { id = shoppingCart.CartId }, shoppingCart);
             
             //_shoppingCartRepository.Insert(shoppingCart);
             //_shoppingCartRepository.Save();

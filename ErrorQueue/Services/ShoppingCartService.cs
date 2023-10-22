@@ -25,12 +25,12 @@ namespace ErrorQueue.Services
 
         public async void DeleteShoppingCart(string id)
         {
-             await _database.DeleteOneAsync(SH => SH.Id == id);
+             await _database.DeleteOneAsync(SH => SH.CartId == id);
         }
 
         public ShoppingCart GetShoppingCartById(string id)
         {
-            return _database.Find(sh =>sh.Id == id).FirstOrDefault();
+            return _database.Find(sh =>sh.CartId == id).FirstOrDefault();
         }
 
         public List<ShoppingCart> GetShoppingCarts()
@@ -50,9 +50,9 @@ namespace ErrorQueue.Services
             shoppingCarts = _database.Find(sh => true).ToList();
 
             foreach (var sh in shoppingCarts) {
-                var currentId = sh.Id;
+                var currentId = sh.CartId;
                 
-                sh.Id =  rn.Next(0, 100).ToString();
+                sh.CartId =  rn.Next(0, 100).ToString();
                 var shoppinCartSerilizared = JsonConvert.SerializeObject(sh);
                 var data = new StringContent(shoppinCartSerilizared, Encoding.UTF8, "application/json");
                 try
@@ -62,7 +62,7 @@ namespace ErrorQueue.Services
                     {
                         try
                         {
-                            await _database.DeleteOneAsync(SH => SH.Id == currentId);
+                            await _database.DeleteOneAsync(SH => SH.CartId == currentId);
                         }
                         catch (Exception ex){
                             Console.WriteLine(ex);

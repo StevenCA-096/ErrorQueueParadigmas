@@ -14,11 +14,13 @@ namespace DataAccess.Models
     {
         [BsonId]
         //[BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string productId { get; set; }
         [BsonElement("name")]
-        public string Name { get; set; }
+        public string productName { get; set; }
         [BsonElement("price")]
-        public int Price { get; set; }
+        public int productPrice { get; set; }
+        [BsonElement("quantity")]
+        public int Quantity { get; set; }
         //[BsonIgnore]
         //public List<ProductCart>? ProductsCart { get; set; }
     }
