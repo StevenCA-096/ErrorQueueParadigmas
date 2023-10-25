@@ -11,7 +11,7 @@ namespace ErrorQueue.Quartz
                 var jobKey = JobKey.Create(nameof(ShppingCartJob));
 
                 options.AddJob<ShppingCartJob>(jobKey).AddTrigger(trigger => trigger.ForJob(jobKey).WithSimpleSchedule(
-                    schedule => schedule.WithIntervalInSeconds(5).WithRepeatCount(0)
+                    schedule => schedule.WithIntervalInSeconds(6).RepeatForever()
                     )) ;
                 
             });

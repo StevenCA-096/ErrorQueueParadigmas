@@ -40,9 +40,11 @@ namespace ErrorQueue.Services
 
         public async Task<List<ShoppingCart>> SendShopping()
         {
-            //"https://localhost:7077/api/Event"
+            //"https://vg05zjdb-7219.use2.devtunnels.ms/api/ShoppingCart/ShoppingCartEvent"
+            //https://localhost:7185/api/ShoppingCart
+
             Random rn = new Random();
-            var url = "https://localhost:7185/api/ShoppingCart";
+            var url = "https://rzxnrnw4-7219.use2.devtunnels.ms/api/ShoppingCart";
    
             using var client = new HttpClient();
 
@@ -52,12 +54,13 @@ namespace ErrorQueue.Services
             foreach (var sh in shoppingCarts) {
                 var currentId = sh.CartId;
                 
-                sh.CartId =  rn.Next(0, 100).ToString();
+                //sh.CartId =  rn.Next(0, 100).ToString();
                 var shoppinCartSerilizared = JsonConvert.SerializeObject(sh);
                 var data = new StringContent(shoppinCartSerilizared, Encoding.UTF8, "application/json");
                 try
                 {
                     var response = await client.PostAsync(url, data);
+                    
                     if (response.IsSuccessStatusCode)
                     {
                         try

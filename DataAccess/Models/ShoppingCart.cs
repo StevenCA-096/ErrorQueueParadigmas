@@ -12,20 +12,22 @@ namespace DataAccess.Models
     [BsonIgnoreExtraElements]
     public class ShoppingCart
     {
-        [BsonId]
+        //[BsonId]
         //[BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("cartId")]
         public string CartId { get; set; }
-        [BsonElement("costumerId")]
-        public int CostumerId { get; set; }
+        [BsonElement("customerId")]
+        public string CustomerId { get; set; }
         
         [BsonElement("products")]
-        public List<Producto> products { get; set; }
+        public List<Producto> products { get; set; } = new List<Producto>();
         [BsonElement("date")]
         public DateTime Date { get; set; }
-        [BsonElement("subtotal")]
-        public double SubTotal { get; set; }
         [BsonElement("total")]
         public double Total { get; set; }
+        [BsonElement("subtotal")]
+        public double SubTotal { get; set; }
+        
            
 
     }
