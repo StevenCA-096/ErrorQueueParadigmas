@@ -44,12 +44,12 @@ namespace ErrorQueue.Services
             //https://localhost:7185/api/ShoppingCart
 
             Random rn = new Random();
-            var url = "https://rzxnrnw4-7219.use2.devtunnels.ms/api/ShoppingCart";
+            var url = "https://820cj4sr-7219.use2.devtunnels.ms/api/ShoppingCart";
    
             using var client = new HttpClient();
 
             List<ShoppingCart> shoppingCarts = new List<ShoppingCart>(); 
-            shoppingCarts = _database.Find(sh => true).ToList();
+            shoppingCarts = _database.Find(sh => true).Limit(1).ToList();
 
             foreach (var sh in shoppingCarts) {
                 var currentId = sh.CartId;

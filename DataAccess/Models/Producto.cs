@@ -19,8 +19,8 @@ namespace DataAccess.Models
         public string productName { get; set; }
         [BsonElement("price")]
         public double productPrice { get; set; }
-        [BsonElement("quantity")]
-        public int quantity { get; set; }
+        [BsonElement("productQuantity")]
+        public int productQuantity { get; set; }
         //[BsonIgnore]
         //public List<ProductCart>? ProductsCart { get; set; }
     }
